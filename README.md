@@ -19,7 +19,7 @@ This setup reflects real production networks where DHCP servers live on a separa
 🖼️ Network Diagram / Screenshot
 md
 ![DHCP-Lab](dhcp-lab.png)
-(Replace with the correct path if the image is inside a folder.)
+
 
 🖥️ Topology Summary
 Devices
