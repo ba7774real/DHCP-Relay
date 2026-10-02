@@ -1,5 +1,7 @@
-Inter‑VLAN Routing (ROAS) + Multi‑Switch VLAN Network + DHCP Relay
-🧩 Project Overview
+Inter‑VLAN Routing (ROAS) + Multi‑Switch VLAN Network + DHCP Relay 
+
+Project Overview
+
 This project demonstrates a complete enterprise‑style Layer 2 + Layer 3 network using:
 
 VLAN segmentation
@@ -16,12 +18,9 @@ End‑to‑end connectivity across VLANs and switches
 
 This setup reflects real production networks where DHCP servers live on a separate server subnet.
 
-🖼️ Network Diagram / Screenshot
-md
-![DHCP-Lab](dhcp-lab.png)
 
+Topology Summary
 
-🖥️ Topology Summary
 Devices
 PCs → SW1 (Access) → SW2 (Distribution) → Router (ROAS)
 
@@ -47,7 +46,7 @@ Server IP → 10.10.10.5
 
 Router g0/1 → 10.10.10.1
 
-📡 Router Configuration (ROAS + DHCP Relay)
+Router Configuration (ROAS + DHCP Relay)
 bash
 interface GigabitEthernet0/0
  description Connected to SW2 trunk
@@ -68,7 +67,8 @@ interface GigabitEthernet0/1
  description Connected to DHCP Server
  ip address 10.10.10.1 255.255.255.0
  no shutdown
-✔ Why this works
+
+ Why this works
 g0/0 is a trunk carrying VLAN 10 & 20
 
 Sub‑interfaces provide inter‑VLAN routing
@@ -77,7 +77,7 @@ ip helper-address forwards DHCP broadcasts to the server
 
 g0/1 provides L3 connectivity to the DHCP server
 
-🖥️ DHCP Server Configuration (Packet Tracer)
+DHCP Server Configuration (Packet Tracer)
 Server → Desktop → IP Configuration
 IP Address: 10.10.10.5
 
@@ -112,7 +112,7 @@ Subnet Mask: 255.255.255.0
 
 Maximum Users: 50
 
-🔀 SW2 – Distribution Switch
+SW2 – Distribution Switch
 Trunk to Router
 bash
 interface GigabitEthernet1/0/7
@@ -129,7 +129,7 @@ vlan 10
  name Marketing
 vlan 20
  name Sales
-🔌 SW1 – Access Switch
+SW1 – Access Switch
 Trunk to SW2
 bash
 interface GigabitEthernet1/0/11
@@ -144,7 +144,7 @@ interface GigabitEthernet1/0/1
 interface GigabitEthernet1/0/3
  switchport mode access
  switchport access vlan 20
-💻 PC IP Configuration (DHCP)
+ PC IP Configuration (DHCP)
 PC in VLAN 10
 Set to DHCP
 
@@ -159,12 +159,12 @@ Expected IP: 192.168.5.10–59
 
 Gateway: 192.168.5.30
 
-🧪 Connectivity Testing
+ Connectivity Testing
 From VLAN 10 PC
 Code
-ping 192.168.1.30   ✔️ (gateway)
-ping 192.168.5.30   ✔️ (router subinterface)
-ping 192.168.5.2    ✔️ (PC in VLAN 20)
+ping 192.168.1.30   (gateway)
+ping 192.168.5.30   (router subinterface)
+ping 192.168.5.2    (PC in VLAN 20)
 DHCP Tests
 PC receives correct IP from server
 
@@ -172,14 +172,14 @@ Gateway matches router subinterface
 
 DNS = 8.8.8.8
 
-✔ Result
+Result
 Inter‑VLAN routing works
 
 DHCP relay works
 
 Multi‑switch VLAN propagation works
 
-🛠️ Skills Demonstrated
+Skills Demonstrated
 VLAN design & segmentation
 
 Multi‑switch trunking
@@ -196,7 +196,7 @@ End‑to‑end troubleshooting
 
 Enterprise‑style L2 + L3 design
 
-🚀 Future Improvements
+Future Improvements
 Add VLAN 30 + DHCP pool
 
 Implement ACLs to restrict inter‑VLAN traffic
